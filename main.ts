@@ -3,11 +3,10 @@ let A = true
 let B = true
 basic.forever(function on_forever() {
     
-    radio.sendNumber(pins.analogReadPin(AnalogPin.P1))
-    radio.sendNumber(pins.analogReadPin(AnalogPin.P2))
+    radio.sendValue("X", pins.analogReadPin(AnalogPin.P1))
+    radio.sendValue("Y", pins.analogReadPin(AnalogPin.P2))
     if (A && !pins.digitalReadPin(DigitalPin.P5)) {
         radio.sendString("A")
-        console.log(A)
         A = false
     } else if (pins.digitalReadPin(DigitalPin.P5)) {
         A = true

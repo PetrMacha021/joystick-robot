@@ -5,11 +5,10 @@ B = True
 
 def on_forever():
     global A, B
-    radio.send_number(pins.analog_read_pin(AnalogPin.P1))
-    radio.send_number(pins.analog_read_pin(AnalogPin.P2))
+    radio.send_value("X", pins.analog_read_pin(AnalogPin.P1))
+    radio.send_value("Y", pins.analog_read_pin(AnalogPin.P2))
     if A and not pins.digital_read_pin(DigitalPin.P5):
         radio.send_string("A")
-        console.log(A)
         A = False
     elif pins.digital_read_pin(DigitalPin.P5):
         A = True
